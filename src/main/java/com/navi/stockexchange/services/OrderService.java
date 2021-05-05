@@ -7,6 +7,7 @@ import com.navi.stockexchange.models.Stock;
 import com.navi.stockexchange.repos.OrderRepository;
 import org.apache.commons.lang3.StringUtils;
 
+import java.math.BigDecimal;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Iterator;
@@ -36,7 +37,7 @@ public class OrderService {
         order.setTime(LocalTime.parse(iterator.next(), DateTimeFormatter.ofPattern(TIME_FORMAT, Locale.getDefault())));
         order.setStock(new Stock(iterator.next()));
         order.setOrderType(OrderType.valueOf(iterator.next().toUpperCase()));
-        order.setAskingPrice(Float.parseFloat(iterator.next()));
+        order.setAskingPrice(new BigDecimal(iterator.next()));
         order.setQuantity(Integer.parseInt(iterator.next()));
 
         orderRepository.addOrder(order);

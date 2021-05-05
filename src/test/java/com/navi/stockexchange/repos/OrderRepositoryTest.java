@@ -12,6 +12,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.runners.MockitoJUnitRunner;
 
+import java.math.BigDecimal;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
@@ -35,7 +36,7 @@ public class OrderRepositoryTest {
         Stock stock = new Stock("BAC");
         mockOrder = new Order("#1",
                 LocalTime.parse("09:45", DateTimeFormatter.ofPattern(TIME_FORMAT, Locale.getDefault())),
-                stock, OrderType.SELL, new Float(240.12), 100);
+                stock, OrderType.SELL, new BigDecimal(240.12), 100);
         buyOrders = new HashMap<>();
         sellOrders = new HashMap<>();
         orderRepository = new OrderRepository(buyOrders, sellOrders);

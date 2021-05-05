@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
+import java.math.BigDecimal;
 import java.time.LocalTime;
 
 @Data
@@ -17,7 +18,7 @@ public class Order {
     private LocalTime time;
     private Stock stock;
     private OrderType orderType;
-    private Float askingPrice;
+    private BigDecimal askingPrice;
     private int quantity;
 }
 

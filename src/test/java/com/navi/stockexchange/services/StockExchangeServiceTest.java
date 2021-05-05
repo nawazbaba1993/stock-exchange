@@ -16,6 +16,7 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.runners.MockitoJUnitRunner;
 
+import java.math.BigDecimal;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
@@ -54,10 +55,10 @@ public class StockExchangeServiceTest {
      * #5 236.00 20 #6
      */
     private void createTransactionMock() {
-        transactionList.add(new Transaction("#3", new Float(237.45), 90, "#2"));
-        transactionList.add(new Transaction("#3", new Float(236.00), 20, "#6"));
-        transactionList.add(new Transaction("#4", new Float(236.00), 10, "#6"));
-        transactionList.add(new Transaction("#5", new Float(236.00), 20, "#6"));
+        transactionList.add(new Transaction("#3", new BigDecimal(237.45), 90, "#2"));
+        transactionList.add(new Transaction("#3", new BigDecimal(236.00), 20, "#6"));
+        transactionList.add(new Transaction("#4", new BigDecimal(236.00), 10, "#6"));
+        transactionList.add(new Transaction("#5", new BigDecimal(236.00), 20, "#6"));
     }
 
     /**
@@ -77,22 +78,22 @@ public class StockExchangeServiceTest {
 
         sellOrderSet.add(new Order("#1",
                 LocalTime.parse("09:45", DateTimeFormatter.ofPattern(TIME_FORMAT, Locale.getDefault())),
-                stock, OrderType.SELL, 240.12f, 100));
+                stock, OrderType.SELL, new BigDecimal(240.12), 100));
         sellOrderSet.add(new Order("#2",
                 LocalTime.parse("09:46", DateTimeFormatter.ofPattern(TIME_FORMAT, Locale.getDefault())),
-                stock, OrderType.BUY, 237.45f, 90));
+                stock, OrderType.BUY, new BigDecimal(237.45), 90));
         buyOrderSet.add(new Order("#3",
                 LocalTime.parse("09:47", DateTimeFormatter.ofPattern(TIME_FORMAT, Locale.getDefault())),
-                stock, OrderType.BUY, 238.10f, 110));
+                stock, OrderType.BUY, new BigDecimal(238.10), 110));
         buyOrderSet.add(new Order("#4",
                 LocalTime.parse("09:48", DateTimeFormatter.ofPattern(TIME_FORMAT, Locale.getDefault())),
-                stock, OrderType.BUY, 237.80f, 10));
+                stock, OrderType.BUY, new BigDecimal(237.80), 10));
         buyOrderSet.add(new Order("#5",
                 LocalTime.parse("09:49", DateTimeFormatter.ofPattern(TIME_FORMAT, Locale.getDefault())),
-                stock, OrderType.BUY, 237.80f, 40));
+                stock, OrderType.BUY, new BigDecimal(237.80), 40));
         sellOrderSet.add(new Order("#6",
                 LocalTime.parse("09:50", DateTimeFormatter.ofPattern(TIME_FORMAT, Locale.getDefault())),
-                stock, OrderType.SELL, 236.00f, 50));
+                stock, OrderType.SELL, new BigDecimal(236.00), 50));
     }
 
     @Test
